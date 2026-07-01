@@ -7,7 +7,8 @@ list_img = requests.get("http://127.0.0.1:4444/list_img").json()
 
 st.title("Welcome to the Home page!")
 
-selected = st.selectbox("Select a image", options=list_img, format_func=lambda x: x["path"])
+# selected = st.selectbox("Select a image", options=list_img, format_func=lambda x: x["path"])
+selected = st.selectbox("Select a image", options=list_img, format_func=lambda x: x["path"].split("/")[-1])
 
 response = requests.post("http://127.0.0.1:4444/select_img", json={"image_index": selected["index"]})
 
