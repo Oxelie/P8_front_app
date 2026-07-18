@@ -73,6 +73,8 @@ API_URL=http://127.0.0.1:4444 streamlit run app.py
 | Plan | B1 (partagé avec l'API) |
 | URL | `https://projet8-front.azurewebsites.net` |
 
+> **État actuel :** l'application est **arrêtée** (économies — coût Azure même sans trafic). L'API (`projet8-api`) doit également être redémarrée avant utilisation. Redémarrage en moins d'une minute.
+
 ### Déploiement via zip deploy
 
 ```bash
@@ -86,14 +88,16 @@ az webapp deployment source config-zip \
 
 ### Gestion des crédits Azure
 
-L'App Service est **mise en pause** entre les sessions pour éviter toute consommation inutile.
+> **État actuel :** l'App Service est **arrêtée** (économies). Redémarrer aussi l'API (`projet8-api`) avant utilisation.
 
 ```bash
-# Mettre en pause
-az webapp stop --name projet8-front --resource-group rg-projet8
-
-# Redémarrer avant démonstration
+# Redémarrer avant démonstration (API + frontend)
+az webapp start --name projet8-api --resource-group rg-projet8
 az webapp start --name projet8-front --resource-group rg-projet8
+
+# Remettre en pause après démonstration
+az webapp stop --name projet8-front --resource-group rg-projet8
+az webapp stop --name projet8-api --resource-group rg-projet8
 ```
 
 ---
