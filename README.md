@@ -1,4 +1,4 @@
-# Projet 8 — Interface Streamlit de segmentation sémantique
+# Projet 8 — Interface Streamlit de segmentation d'image pour voiture autonome
 
 Interface de démonstration pour le projet de segmentation sémantique d'images urbaines (véhicule autonome).  
 Développée avec Streamlit, déployée sur Azure App Service.
