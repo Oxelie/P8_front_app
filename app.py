@@ -5,13 +5,13 @@ import base64
 
 API_URL = os.getenv("API_URL", "http://127.0.0.1:4444")
 
-list_img = requests.get(f"{API_URL}/preload").json()
+test_images = requests.get(f"{API_URL}/preload").json()
 
 
 st.title("Welcome to the Home page!")
 
-# selected = st.selectbox("Select a image", options=list_img, format_func=lambda x: x["path"])
-selected = st.selectbox("Select a image", options=list_img, format_func=lambda x: x["path"].split("/")[-1])
+# selected = st.selectbox("Select a image", options=test_images, format_func=lambda x: x["path"])
+selected = st.selectbox("Select a image", options=test_images, format_func=lambda x: x["path"].split("/")[-1])
 
 response = requests.post(f"{API_URL}/select_img", json={"image_index": selected["index"]})
 
