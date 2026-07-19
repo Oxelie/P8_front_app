@@ -5,7 +5,7 @@ import base64
 
 API_URL = os.getenv("API_URL", "http://127.0.0.1:4444")
 
-list_img = requests.get(f"{API_URL}/list_img").json()
+list_img = requests.get(f"{API_URL}/preload").json()
 
 
 st.title("Welcome to the Home page!")
