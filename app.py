@@ -5,7 +5,11 @@ import base64
 
 API_URL = os.getenv("API_URL", "http://127.0.0.1:4444")
 
-test_images = requests.get(f"{API_URL}/preload").json()
+@st.cache_data
+def load_test_images():
+    return requests.get(f"{API_URL}/preload").json()
+
+test_images = load_test_images()
 
 
 st.title("Segmentation sémantique embarquée — Véhicule autonome")
