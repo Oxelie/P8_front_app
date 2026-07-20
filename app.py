@@ -8,7 +8,8 @@ API_URL = os.getenv("API_URL", "http://127.0.0.1:4444")
 test_images = requests.get(f"{API_URL}/preload").json()
 
 
-st.title("Welcome to the Home page!")
+st.title("Segmentation sémantique embarquée — Véhicule autonome")
+st.caption("Dataset : Cityscapes (8 classes agrégées) · Modèle : MobileNetV3Small-UNet (fine-tuning)")
 
 # selected = st.selectbox("Select a image", options=test_images, format_func=lambda x: x["path"])
 selected = st.selectbox("Select a image", options=test_images, format_func=lambda x: x["path"].split("/")[-1])
@@ -50,4 +51,5 @@ with col2:
     if gros_bouton:
         response = requests.post(f"{API_URL}/predict", json={"image_index": selected["index"]})
         mask_pred = base64.b64decode(response.json()["img_mask_pred"])
+        st.caption("Modèle : MobileNetV3Small-UNet · val Dice = 0.696 · val mIoU = 0.661")
         st.image(mask_pred)
