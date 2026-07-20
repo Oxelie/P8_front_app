@@ -21,7 +21,7 @@ L'interface permet de :
 2. **Visualiser** l'image originale et le masque de segmentation réel côte à côte
 3. **Lancer une prédiction** et afficher le masque généré par le modèle
 
-> La prédiction peut prendre 30 à 60 secondes (inférence CPU sur Azure B1).
+> La prédiction peut prendre quelques secondes à quelques dizaines de secondes (inférence CPU sur Azure B1, modèle MobileNetV3Small-UNet).
 
 ---
 
