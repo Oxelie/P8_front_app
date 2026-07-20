@@ -53,7 +53,8 @@ with col2:
 col1, col2, col3 = st.columns([1,3,1])
 with col2:
     if gros_bouton:
-        response = requests.post(f"{API_URL}/predict", json={"image_index": selected["index"]})
+        with st.spinner("Prédiction en cours..."):
+            response = requests.post(f"{API_URL}/predict", json={"image_index": selected["index"]})
         mask_pred = base64.b64decode(response.json()["img_mask_pred"])
         st.caption("Modèle : MobileNetV3Small-UNet · val Dice = 0.696 · val mIoU = 0.661")
         st.image(mask_pred)
